@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Instagram Login</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #000;
+      font-family: Arial, sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 10px;
+    }
+
+    .login-container {
+      background-color: #111;
+      padding: 25px 30px;
+      width: 100%;
+      max-width: 350px;
+      text-align: center;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-family:'Times New Roman', Times, serif;
+      font-size: 40px;
+      margin-bottom: 25px;
+      color: #fff;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      background: #1c1c1c;
+      border: 1px solid #333;
+      border-radius: 6px;
+      color: white;
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #aaa;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .login-button {
+      background-color: #3897f0;
+      color: white;
+      border: none;
+      padding: 12px;
+      width: 100%;
+      margin-top: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
+    }
+
+    .login-button:hover {
+      background-color: #3178cc;
+    }
+
+    .or-divider {
+      margin: 20px 0;
+      color: #888;
+    }
+
+    .facebook-login {
+      color: #0095f6;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+
+    .facebook-login img {
+      width: 18px;
+      height: 18px;
+    }
+
+    .forgot-password,
+    .signup-link {
+      font-size: 14px;
+      margin-top: 12px;
+      color: #aaa;
+    }
+
+    .signup-link a,
+    .forgot-password a {
+      color: #3897f0;
+      text-decoration: none;
+    }
+
+    .error-message {
+      color: #f43636;
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    @media (max-width: 400px) {
+      .login-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">Instagram</div>
+
+    <form onsubmit="login(event)">
+      <input type="text" id="username" placeholder="Phone number, username or email" required>
+
+      <div class="password-wrapper">
+        <input type="password" id="password" placeholder="Password" required>
+        <span class="toggle-password" onclick="togglePassword()">Show</span>
+      </div>
+
+      <button class="login-button" type="submit">Log in</button>
+      <div class="error-message" id="errorMsg"></div>
+    </form>
+
+    <div class="or-divider">OR</div>
+
+    <div class="facebook-login" onclick="alert('Facebook login coming soon!')">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+      <span>Log in with Facebook</span>
+    </div>
+
+    <div class="forgot-password"><a href="#">Forgotten your password?</a></div>
+
+    <div class="signup-link">Don't have an account? <a href="#" onclick="signUp()">Sign up</a></div>
+  </div>
+
+  <script>
+    function login(event) {
+      event.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const errorMsg = document.getElementById("errorMsg");
+
+      // Dummy validation
+      if (username === "admin" && password === "admin") {
+        alert("Login successful!");
+        errorMsg.textContent = "";
+      } else {
+        errorMsg.textContent = "Invalid username or password.";
+      }
+    }
+
+    function signUp() {
+      alert("Redirecting to signup page...");
+      // window.location.href = "signup.html"; // Optional real link
+    }
+
+    function togglePassword() {
+      const passwordField = document.getElementById("password");
+      const toggle = document.querySelector(".toggle-password");
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggle.textContent = "Hide";
+      } else {
+        passwordField.type = "password";
+        toggle.textContent = "Show";
+      }
+    }
+  </script>
+</body>
+</html>
